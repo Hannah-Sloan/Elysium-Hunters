@@ -58,6 +58,8 @@ output_file = str(sys.argv[2])
 
 indent_depth = ""
 
+isHomePage = (input_file[:len(input_file)-3]) == "index"
+
 # Boilerplate
 html = "<!DOCTYPE html>\n"
 html += "<html lang=\"en\">\n"
@@ -69,7 +71,7 @@ html += indent_depth + "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.
 #html += indent_depth + "<link rel=\"icon\" href=\"https://raw.githubusercontent.com/Hannah-Sloan/Teenage-Coven-Knights/master/docs/img/moon_chrome.ico\" type=\"image/x-icon\"/>\n"
 html += indent_depth + "<title> "
 title = ""
-if((input_file[:len(input_file)-3]) == "index"): #Adding Title
+if(isHomePage): #Adding Title
     html += "Home - Elysium Hunters" 
     title = "Home"
 else:
@@ -78,7 +80,7 @@ else:
     title = title.upper()
     html += title + " - Elysium Hunters"
 html += " </title>\n"
-html += indent_depth + f"<meta name=\"description\" content=\"TCK RPG System - {title}\" >\n"
+html += indent_depth + f"<meta name=\"description\" content=\"Elysium Hunters - {title}\" >\n"
 html += indent_depth + "<meta name=\"keywords\" content=\"HTML, CSS, RPG, open, Elysium Hunters, Elysium, Hunters, rules-lite, sci-fi, scifi, indie\">\n"
 html += indent_depth + "<meta name=\"author\" content=\"Hannah Ava Sloan\">\n"
 html += indent_depth + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
@@ -91,7 +93,8 @@ html += indent_depth + "<body>\n"
 indent_depth += "\t"
 
 html += indent_depth + f"<p><a href=\"https://github.com/Hannah-Sloan/Elysium-Hunters\">GITHUB</a>\n"
-html += indent_depth + f"<a href=\"index.html\">HOME</a></p>\n"
+if(not(isHomePage)): #Adding Title
+    html += indent_depth + f"<a href=\"index.html\">HOME</a></p>\n"
 
 html += indent_depth + "<main>\n"
 indent_depth += "\t"
@@ -108,33 +111,49 @@ def header_indent(header_depth_in):
 
 lines = md.split("\n")
 curSection = False
-for line in lines:
-    if line.startswith("#"):
-        level = line.count("#")
-        header_depth = level
-        content = line[level+1:]
-        content = replaceLineWithImages(content)
-        content = replaceLineWithLinks(content)
-        content = replaceLineWithBold(content)
-        content = replaceLineWithItalic(content)
-        if(curSection):
-            html += indent_depth + header_indent(level) + "</section>\n"
-            curSection = False
 
-        if(level > 1):
-            id = content.lower().replace(" ", "-")
-            html += indent_depth + header_indent(level) + f"<section id=\"{id}\">\n"
-            curSection = True
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [f for f in listdir("docs\\") if (isfile(join("docs\\", f)) and ".html" in f)]
 
-        html += indent_depth + header_indent(level) + f"<h{level}>{content}</h{level}>\n"
-    else:
-        if(line != ""):
-            line = replaceLineWithImages(line)
-            line = replaceLineWithLinks(line)
-            line = replaceLineWithBold(line)
-            line = replaceLineWithItalic(line)
+if(isHomePage):
+    html += indent_depth + "<h1>Elysium Hunters</h1>\n"
+    for page in onlyfiles:
+        if(page == "index.html"): 
+            continue
+        pageName = page.replace("_", " ")
+        pageName = page.replace(".html", "")
+        pageName = pageName.upper()
+        html += indent_depth + f"<p><a href={page}>{pageName}</a></p>\n"
+    html += indent_depth + "<p>Read more about Elysium Hunters' Game License on Github: <a href=\"https://github.com/Hannah-Sloan/Elysium-Hunters/blob/master/LICENSE.md\">LICENSE</a></p>"
+else:
+    for line in lines:
+        if line.startswith("#"):
+            level = line.count("#")
+            header_depth = level
+            content = line[level+1:]
+            content = replaceLineWithImages(content)
+            content = replaceLineWithLinks(content)
+            content = replaceLineWithBold(content)
+            content = replaceLineWithItalic(content)
+            if(curSection):
+                html += indent_depth + header_indent(level) + "</section>\n"
+                curSection = False
 
-            html += indent_depth + header_indent(header_depth+1) + f"<p>{line}</p>\n"
+            if(level > 1):
+                id = content.lower().replace(" ", "-")
+                html += indent_depth + header_indent(level) + f"<section id=\"{id}\">\n"
+                curSection = True
+
+            html += indent_depth + header_indent(level) + f"<h{level}>{content}</h{level}>\n"
+        else:
+            if(line != ""):
+                line = replaceLineWithImages(line)
+                line = replaceLineWithLinks(line)
+                line = replaceLineWithBold(line)
+                line = replaceLineWithItalic(line)
+
+                html += indent_depth + header_indent(header_depth+1) + f"<p>{line}</p>\n"
 
 indent_depth = indent_depth.replace("\t", "", 1)
 html += indent_depth + "</main>\n"

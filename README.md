@@ -4,7 +4,7 @@
 
 ## What Is This?
 
-Elysium Hunters Elevator Pitch. Link to ITCH.IO
+Elysium Hunters Elevator Pitch. [Itch.io page](https://hannahsloan.itch.io/elysium-hunters)
 
 
 
