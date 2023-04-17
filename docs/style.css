@@ -1,0 +1,163 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.cdnfonts.com/css/tex-gyre-heros');
+
+html
+{
+    background-color: #121212; /*background color of the window and titlebar*/
+}
+
+#license 
+{
+    /* position: absolute;
+    bottom: 3em; */
+    margin-top: 6em;
+    margin-bottom: 2em;
+    text-align: center;
+    vertical-align: text-bottom;
+}
+
+html, body 
+{
+    font-family: "Open Sans"; /*custom font*/
+    font-size: 1em;
+    line-height: 1.5;
+    color: #e0e0e0;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* smartphones, iPhone, portrait 480x320 phones */ 
+@media (min-width:20em)  
+{ body{ max-width: 17em;} }
+
+/* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+@media (min-width:30em)  
+{ body{max-width: 20em;} }
+
+/* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+@media (min-width:40em)  
+{ body{max-width: 30em;}}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */ 
+@media (min-width:60em)  
+{ body{max-width: 40em;}}
+
+/* big landscape tablets, laptops, and desktops */ 
+@media (min-width:64em) 
+{ body{max-width: 48em;} }
+
+/* hi-res laptops and desktops */ 
+@media (min-width:80em) 
+{ body{max-width: 60em;} }
+
+img[src*="Moon.svg"] {
+    width: 2em;
+    height: auto;
+    vertical-align: middle
+}
+
+@media (min-width:20em) {
+    h1 
+    {
+        font-family: 'TeXGyreHeros';
+        font-size: 3em; /*115px;*/
+        color: #be9fe1;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        text-align: center;
+    }
+}
+
+@media (min-width:30em) {
+    h1 
+    {
+        font-family: 'TeXGyreHeros';
+        font-size: 7em; /*115px;*/
+        color: #be9fe1;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        text-align: center;
+    }
+}
+
+@media (min-width:20em) {
+    h2 
+    {
+        font-size: 1.5em; /* 48px;*/
+        text-transform: uppercase;
+
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
+
+@media (min-width:30em) {
+    h2 
+    {
+        font-size: 3em; /* 48px;*/
+        text-transform: uppercase;
+
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+}
+
+h3 
+{
+    font-size: 1.5em /* px*/;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+h4 
+{
+    font-size: 1.125em; /*18px*/;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+h5 
+{
+    font-size: 1em; /*16px;*/
+    text-transform: uppercase;
+    font-weight: bold;
+
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+h6 
+{
+    font-size: 1em;
+    text-transform: lowercase;
+    font-weight: bold;
+
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+p 
+{
+    overflow-wrap: break-word;
+    margin-bottom: 2.25;
+    margin-top: 0;
+}
+
+strong 
+{
+    font-weight: bold;
+}
+
+em
+{
+    font-style: italic;
+}
