@@ -2,6 +2,14 @@
 
 # ![Moon Logo](img/Moon.svg)Elysium Hunters
 
+About This Game SECTION TODO:
+
+- Flavorful immersive text.
+
+- system main themes
+
+- My goals with this system.
+
 
 
 [GAME RULES](game_rules.md)

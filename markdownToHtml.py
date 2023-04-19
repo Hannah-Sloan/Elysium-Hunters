@@ -99,7 +99,7 @@ if(not(isHomePage)): #Adding Title
 html += indent_depth + "<main>\n"
 indent_depth += "\t"
 
-with open(f"markdown\{input_file}", "r") as f:
+with open(f"markdown\{input_file}", "r", encoding="utf8") as f:
     md = f.read()
 
 counter = 0
@@ -165,5 +165,5 @@ html += indent_depth + "</body>\n"
 html += "</html>"
 
 # Write the output to a file
-with open(f"docs\{output_file}", "w") as f:
+with open(f"docs\{output_file}", "w", encoding="utf8") as f:
     f.write(html)
