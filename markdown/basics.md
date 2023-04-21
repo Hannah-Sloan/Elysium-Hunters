@@ -28,7 +28,7 @@ Elysium Hunters uses **polyhedral dice**. You can usually find physical sets in 
 
 ​    **Multiple Dice:** The number of dice is denoted by a number **before** the *d*. You should roll all the dice and then **add the results together**. *example: 3d6* means to roll **3** six-sided dice and add the results together.
 
-​    **Modifiers:** A number is sometimes added or subtracted to the roll denoted as *+- (number)* after the roll. *example: 3d6+2, 3d6+TODO MODIFIER*. Modifiers might be variable, such as *TODO MODIFIER*. In some cases a modifier might be negative which will take away from the result of your roll.
+​    **Modifiers:** A number is sometimes added or subtracted to the roll denoted as *+ or - (number)* after the roll. *example: 3d6+2, 3d6+TODO MODIFIER*. Modifiers might be variable, such as *TODO MODIFIER*. In some cases a modifier might be negative which will take away from the result of your roll.
 
 ### Percentile Roll
 
