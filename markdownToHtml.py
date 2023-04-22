@@ -54,7 +54,8 @@ def replaceLineWithItalic(content):
     return content
 
 input_file = str(sys.argv[1])
-output_file = str(sys.argv[2])
+output_file = input_file.replace(".md", ".html")
+#output_file = str(sys.argv[2])
 
 indent_depth = ""
 
@@ -114,16 +115,17 @@ curSection = False
 
 from os import listdir
 from os.path import isfile, join
-onlyfiles = [f for f in listdir("docs\\") if (isfile(join("docs\\", f)) and ".html" in f)]
+onlyfiles = [f for f in listdir("markdown\\") if (isfile(join("markdown\\", f)) and ".md" in f)]
 
 if(isHomePage):
     html += indent_depth + "<h1>Elysium Hunters</h1>\n"
     for page in onlyfiles:
-        if(page == "index.html"): 
+        if(page == "index.md"): 
             continue
         pageName = page.replace("_", " ")
-        pageName = page.replace(".html", "")
+        pageName = page.replace(".md", "")
         pageName = pageName.upper()
+        page = page.replace(".md", ".html")
         html += indent_depth + f"<p><a href={page}>{pageName}</a></p>\n"
     html += indent_depth + "<p>Read more about Elysium Hunters' Game License on Github: <a href=\"https://github.com/Hannah-Sloan/Elysium-Hunters/blob/master/LICENSE.md\">LICENSE</a></p>"
 else:
@@ -164,6 +166,10 @@ indent_depth = indent_depth.replace("\t", "", 1)
 html += indent_depth + "</body>\n"
 html += "</html>"
 
+import os
+path = os.path.dirname(f"docs\{output_file}")
+if not (os.path.exists(path)):
+    os.makedirs(path)
 # Write the output to a file
 with open(f"docs\{output_file}", "w", encoding="utf8") as f:
     f.write(html)
